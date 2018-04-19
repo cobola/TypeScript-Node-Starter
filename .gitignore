@@ -13,8 +13,11 @@ logs
 results
 tmp
 
-#Build
+# Build
 public/css/main.css
+
+# Coverage reports
+coverage
 
 # API keys and secrets
 .env
@@ -34,4 +37,5 @@ Thumbs.db
 # Ignore built ts files
 dist/**/*
 
-.history
+# Ignore output from coverage report
+coverage

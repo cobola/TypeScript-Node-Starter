@@ -1,10 +1,10 @@
-import * as async from "async";
-import * as crypto from "crypto";
-import * as nodemailer from "nodemailer";
-import * as passport from "passport";
+import async from "async";
+import crypto from "crypto";
+import nodemailer from "nodemailer";
+import passport from "passport";
 import { default as User, UserModel, AuthToken } from "../models/User";
 import { Request, Response, NextFunction } from "express";
-import { LocalStrategyInfo } from "passport-local";
+import { IVerifyOptions } from "passport-local";
 import { WriteError } from "mongodb";
 const request = require("express-validator");
 
@@ -38,7 +38,7 @@ export let postLogin = (req: Request, res: Response, next: NextFunction) => {
     return res.redirect("/login");
   }
 
-  passport.authenticate("local", (err: Error, user: UserModel, info: LocalStrategyInfo) => {
+  passport.authenticate("local", (err: Error, user: UserModel, info: IVerifyOptions) => {
     if (err) { return next(err); }
     if (!user) {
       req.flash("errors", info.message);
